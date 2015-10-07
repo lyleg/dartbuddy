@@ -1,0 +1,29 @@
+{
+  "name": "fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "copyStatic": "cp index.html dist/index.html && cp css/bootstrap.min.css dist/css/bootstrap.min.css",
+    "clean": "rm -rf dist && mkdir dist && mkdir dist/js && mkdir dist/css",
+    "watch": "npm run clean && npm run copyStatic && watchify js/index.js -o dist/js/bundle.js -dv -t babelify",
+    "build": "bin/build.sh",
+    "watch-scss": "sass --watch css/dartbuddy.scss:dist/css/bundle.css",
+    "push": "bin/push.sh",
+    "bp": "npm run build && npm run push",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lyle Garza",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "react": "^0.13.3",
+    "react-bootstrap": "^0.25.2",
+    "react-redux": "^3.0.1",
+    "redux": "^3.0.2",
+    "redux-router": "^1.0.0-beta3"
+  },
+  "devDependencies": {
+    "babelify": "^6.3.0"
+  }
+}
