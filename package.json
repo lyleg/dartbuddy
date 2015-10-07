@@ -1,5 +1,5 @@
 {
-  "name": "fe",
+  "name": "dartBuddy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,8 @@
     "clean": "rm -rf dist && mkdir dist && mkdir dist/js && mkdir dist/css",
     "watch": "npm run clean && npm run copyStatic && watchify js/index.js -o dist/js/bundle.js -dv -t babelify",
     "build": "bin/build.sh",
+    "build-scss": "sass css/dartbuddy.scss:dist/css/bundle.css",
     "watch-scss": "sass --watch css/dartbuddy.scss:dist/css/bundle.css",
-    "push": "bin/push.sh",
-    "bp": "npm run build && npm run push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lyle Garza",
@@ -24,6 +23,7 @@
     "redux-router": "^1.0.0-beta3"
   },
   "devDependencies": {
-    "babelify": "^6.3.0"
+    "babelify": "^6.3.0",
+    "envify": "^3.4.0"
   }
 }
