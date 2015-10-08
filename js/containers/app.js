@@ -4,6 +4,9 @@ import { addScore, endTurn } from '../actions'
 import  Scoreboard from '../components/scoreboard'
 import  Marks from '../components/marks'
 import { Grid, Button, Row, Col } from 'react-bootstrap'
+import Process from '../process'
+const process = new Process()
+
 
 class App extends Component {
   buildBoard(){
@@ -17,7 +20,6 @@ class App extends Component {
         {displayName: 'bullseye', value: 25, maxPerThrow: 2}]
 
 
-      
     return boardData.map((target, key)=>{
         return  (
             <Row style = {{marginBottom: '20', border: '1px solid'}}>
@@ -37,13 +39,18 @@ class App extends Component {
         )              
     })   
   }
+  onEndTurn(){
+    const { board, dispatch } = this.props
+    const newBoard = process.calculateComputerTurn(board)
+    dispatch(endTurn(newBoard))
+  }
   render() {
     // Injected by connect() call:
     const { dispatch, board } = this.props
     const boardUI = this.buildBoard();
     return (
       <div>
-        <Scoreboard onEndTurn = {()=>{dispatch(endTurn())}}board = {board} />
+        <Scoreboard onEndTurn = {this.onEndTurn.bind(this)}board = {board} />
         <Grid>
             {boardUI}
        </Grid>
