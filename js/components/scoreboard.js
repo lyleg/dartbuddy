@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Grid, Row, Col, Button } from 'react-bootstrap'
 
-export default class Objective extends Component {
+export default class Scoreboard extends Component {
     computeScore(player){
         const score = Object.keys(this.props.board).reduce((score, target)=>{
             const boardData = this.props.board[target];
@@ -40,6 +40,6 @@ export default class Objective extends Component {
     }
 }
 
-Objective.propTypes = {
-    text: PropTypes.string.isRequired
+Scoreboard.propTypes = {
+    board: PropTypes.object.isRequired
 }

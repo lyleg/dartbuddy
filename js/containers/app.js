@@ -22,7 +22,7 @@ class App extends Component {
 
     return boardData.map((target, key)=>{
         return  (
-            <Row style = {{marginBottom: '20', border: '1px solid'}}>
+            <Row key = {key} style = {{marginBottom: '20', border: '1px solid'}}>
                 <Col md = {3}>
                     <Marks player = {1} board = {board} target = {target.displayName} />
                 </Col>

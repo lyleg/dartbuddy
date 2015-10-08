@@ -16,11 +16,11 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^3.10.1",
-    "react": "^0.13.3",
-    "react-bootstrap": "^0.25.2",
-    "react-redux": "^3.0.1",
-    "redux": "^3.0.2",
-    "redux-router": "^1.0.0-beta3"
+    "react": "^0.14.0",
+    "react-bootstrap": "0.27.0",
+    "react-dom": "0.14.0",
+    "react-redux": "3.1.0",
+    "redux": "3.0.2"
   },
   "devDependencies": {
     "babelify": "^6.3.0",
