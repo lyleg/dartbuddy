@@ -11,18 +11,11 @@ const process = new Process()
 class App extends Component {
   buildBoard(){
     const { dispatch, board } = this.props
-    const boardData = [{displayName: '20', value: 20, maxPerThrow: 3},//consolidate with board data in reducer
-        {displayName: '19', value: 19, maxPerThrow: 3},
-        {displayName: '18', value: 18, maxPerThrow: 3},
-        {displayName: '17', value: 17, maxPerThrow: 3},
-        {displayName: '16', value: 16, maxPerThrow: 3},
-        {displayName: '15', value: 15, maxPerThrow: 3},
-        {displayName: 'bullseye', value: 25, maxPerThrow: 2}]
 
-
-    return boardData.map((target, key)=>{
+    return Object.keys(board).sort((a,b)=>{return board[a].priority-board[b].priority}).map((targetKey, index)=>{
+        const target = board[targetKey];
         return  (
-            <Row key = {key} style = {{marginBottom: '20', border: '1px solid'}}>
+            <Row key = {index} style = {{marginBottom: '20', border: '1px solid'}}>
                 <Col md = {3}>
                     <Marks player = {1} board = {board} target = {target.displayName} />
                 </Col>
