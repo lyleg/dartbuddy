@@ -38,11 +38,11 @@ class App extends Component {
   }
   render() {
     // Injected by connect() call:
-    const { dispatch, board } = this.props
+    const { dispatch, board, currentThrow } = this.props
     const boardUI = this.buildBoard();
     return (
       <div>
-        <Scoreboard onEndTurn = {this.onEndTurn.bind(this)}board = {board} />
+        <Scoreboard currentThrow = {currentThrow} onEndTurn = {this.onEndTurn.bind(this)}board = {board} />
         <Grid>
             {boardUI}
        </Grid>
@@ -56,7 +56,8 @@ App.propTypes = {
 
 function select(state) {
   return {
-    board: state.board
+    board: state.board,
+    currentThrow: state.game.currentThrow
   }
 }
 

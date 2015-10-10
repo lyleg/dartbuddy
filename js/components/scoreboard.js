@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import CurrentThrow from './currentthrow'
 import { Grid, Row, Col, Button } from 'react-bootstrap'
 
 export default class Scoreboard extends Component {
@@ -37,7 +38,7 @@ export default class Scoreboard extends Component {
                 </Row>
                 <Row>
                     <Col md = {3}>
-                        Threw 3 20s
+                        <CurrentThrow playerThrow = {this.props.currentThrow.player1} />
                     </Col>
                     <Col md= {6}>
                     </Col>

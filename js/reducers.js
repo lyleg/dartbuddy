@@ -5,7 +5,7 @@ import merge from 'lodash/object/merge'
 
 const initialGame = {
     round: 1,
-    currentThrow = {
+    currentThrow: {
         player1: {
             20:0, 19:0, 18: 0, 17: 0, 16: 0, 15:0, 'bullseye': 0
         },
@@ -85,12 +85,13 @@ const initialBoard = {
 //
 
 
-function board(state = initialBoard, action){
+function board(state = initialBoard, action){//probably move board to state.game.board
     const newBoard = merge({}, state);
     switch(action.type){
-        case types.ADD_SCORE:
-            //ensure <= 9 moves
-           newBoard[action.target] = merge({}, state[action.target], {player1: state[action.target].player1 + 1})
+        case types.ADD_SCORE://hardcoded for player 1 scores with p2 being computer
+            if(state[action.target].player2 < 3){
+                newBoard[action.target] = merge({}, state[action.target], {player1: state[action.target].player1 + 1})
+            }
            return newBoard
         break
         case types.END_TURN:
@@ -105,9 +106,13 @@ function board(state = initialBoard, action){
 function game(state = initialGame, action){
     switch(action.type){
         case types.ADD_SCORE:
-            return merge({}, state.currentThrow, {player1: state.currentThrow.player1[target] + 1})
+            let player1 = state.currentThrow.player1
+            player1[action.target] = player1[action.target] + 1 
+            const currentThrow = merge({},state.currentThrow,{player1: player1})
+            return merge({}, state, currentThrow)
         break
         case types.END_TURN:
+            return merge({}, state.currentThrow, {player1: initialGame.currentThrow.player1})
             //append player 1 to log, take new stuff
         break;
         default:
@@ -117,7 +122,8 @@ function game(state = initialGame, action){
 }
 
 const dartBuddyApp = combineReducers({
-  board
+  board,
+  game
 })
 
 export default dartBuddyApp
