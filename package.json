@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/lyleg/dartbuddy"
+  },
   "scripts": {
     "copyStatic": "cp index.html dist/index.html && cp css/bootstrap.min.css dist/css/bootstrap.min.css",
     "clean": "rm -rf dist && mkdir dist && mkdir dist/js && mkdir dist/css",

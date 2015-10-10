@@ -4,8 +4,15 @@ import merge from 'lodash/object/merge'
 
 
 const initialGame = {
-    turn: 1,
-    currentMarks:[]
+    round: 1,
+    currentThrow = {
+        player1: {
+            20:0, 19:0, 18: 0, 17: 0, 16: 0, 15:0, 'bullseye': 0
+        },
+        player2: {
+            20:0, 19:0, 18: 0, 17: 0, 16: 0, 15:0, 'bullseye': 0
+        }
+    }
 }
 
 const initialBoard = {
@@ -95,15 +102,10 @@ function board(state = initialBoard, action){
     
 }
 
-/*
-function throwLabelBuild(){
-
-}
-
 function game(state = initialGame, action){
     switch(action.type){
         case types.ADD_SCORE:
-            //return merge({}, state.game.log, {player1: state.game.log})
+            return merge({}, state.currentThrow, {player1: state.currentThrow.player1[target] + 1})
         break
         case types.END_TURN:
             //append player 1 to log, take new stuff
@@ -113,7 +115,6 @@ function game(state = initialGame, action){
     }
 
 }
-*/
 
 const dartBuddyApp = combineReducers({
   board
