@@ -9,8 +9,6 @@ let store = createStore(reducers);
 
 let rootElement = document.querySelector('#app');
 render(
-  // The child must be wrapped in a function
-  // to work around an issue in React 0.13.
   <Provider store={store}>
     <App />
   </Provider>,

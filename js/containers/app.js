@@ -7,7 +7,6 @@ import { Grid, Button, Row, Col } from 'react-bootstrap'
 import Process from '../process'
 const process = new Process()
 
-
 class App extends Component {
   buildBoard(){
     const { dispatch, board } = this.props

@@ -66,9 +66,9 @@ const initialBoard = {
         player1: 0,
         player2: 0,
         priority: 7,
-        displayName: '20',
+        displayName: 'bullseye',
         value: 25,
-        maxPerThrow: 3
+        maxPerThrow: 2
 
     }   
     
@@ -95,18 +95,28 @@ function board(state = initialBoard, action){
     
 }
 
+/*
+function throwLabelBuild(){
+
+}
+
 function game(state = initialGame, action){
     switch(action.type){
+        case types.ADD_SCORE:
+            //return merge({}, state.game.log, {player1: state.game.log})
+        break
+        case types.END_TURN:
+            //append player 1 to log, take new stuff
+        break;
         default:
             return state
     }
 
 }
-
+*/
 
 const dartBuddyApp = combineReducers({
-  board,
-  game
+  board
 })
 
 export default dartBuddyApp

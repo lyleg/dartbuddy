@@ -35,6 +35,16 @@ export default class Scoreboard extends Component {
                         Player 2: {player2Score}
                     </Col>
                 </Row>
+                <Row>
+                    <Col md = {3}>
+                        Threw 3 20s
+                    </Col>
+                    <Col md= {6}>
+                    </Col>
+                    <Col>
+                        Threw 1 20
+                    </Col>
+               </Row>
             </Grid>
         )
     }
