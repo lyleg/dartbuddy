@@ -95,7 +95,7 @@ function board(state = initialBoard, action){//probably move board to state.game
            return newBoard
         break
         case types.END_TURN:
-            return merge({},newBoard,action.newBoard)
+            return merge({},newBoard,action.results.newBoard)
         break
         default:
             return state
@@ -104,15 +104,24 @@ function board(state = initialBoard, action){//probably move board to state.game
 }
 
 function game(state = initialGame, action){
-    switch(action.type){
+    //not clearing player 2 throw correctly, really no reason to have initialgame current throw so built out
+    let player1, player2, currentThrow
+    switch(action.type){//clean up all these merges
         case types.ADD_SCORE:
-            let player1 = state.currentThrow.player1
-            player1[action.target] = player1[action.target] + 1 
-            const currentThrow = merge({},state.currentThrow,{player1: player1})
-            return merge({}, state, currentThrow)
+            player1 = merge({},state.currentThrow.player1)
+            player1[action.target] = player1[action.target] + 1
+            player2 = {} 
+            currentThrow = merge({},state.currentThrow,{player1: player1, player2: player2})
+            return merge({}, state, {currentThrow: currentThrow})
         break
         case types.END_TURN:
-            return merge({}, state.currentThrow, {player1: initialGame.currentThrow.player1})
+            player1 = initialGame.currentThrow.player1
+            player2 = action.results.totalHits.reduce((currentThrow,hit)=>{
+                currentThrow[hit] = currentThrow.hasOwnProperty(hit) ? currentThrow[hit] + 1 : 1
+                return currentThrow
+            },{})
+            currentThrow = merge({}, state.currentThrow, {player1: player1, player2: player2})
+            return merge({}, state, {currentThrow: currentThrow})
             //append player 1 to log, take new stuff
         break;
         default:

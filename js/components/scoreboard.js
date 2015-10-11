@@ -43,7 +43,7 @@ export default class Scoreboard extends Component {
                     <Col md= {6}>
                     </Col>
                     <Col>
-                        Threw 1 20
+                        <CurrentThrow playerThrow = {this.props.currentThrow.player2} />
                     </Col>
                </Row>
             </Grid>

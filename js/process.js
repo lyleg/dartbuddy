@@ -37,14 +37,16 @@ class Process{
        return hits
     }
     calculateComputerTurn(board){
+        let totalHits = []
         for (let i = 0; i < 3; i++){
             const hits = this.calculateComputerThrow(board);
+            totalHits = totalHits.concat(hits)
             if(hits.length > 0){
                 const targetHit = hits[0];
                 board[targetHit] = merge({},board[targetHit], {player2: board[targetHit].player2 + hits.length})
             }
        } 
-        return board;    
+        return {board:board, totalHits: totalHits}    
     }
 }
 
