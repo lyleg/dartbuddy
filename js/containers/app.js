@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { addScore, endTurn } from '../actions'
 import  Scoreboard from '../components/scoreboard'
+import  Board from '../components/board'
 import  Marks from '../components/marks'
 import { Grid, Button, Row, Col } from 'react-bootstrap'
 import Process from '../process'
@@ -43,9 +44,9 @@ class App extends Component {
     return (
       <div>
         <Scoreboard currentThrow = {currentThrow} onEndTurn = {this.onEndTurn.bind(this)}board = {board} />
-        <Grid>
-            {boardUI}
-       </Grid>
+        <Board board = {board} onClick = {(target)=>{
+            dispatch(addScore(target))
+        }} />
       </div>
     );
   }
