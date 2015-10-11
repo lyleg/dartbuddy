@@ -7,10 +7,8 @@ const initialGame = {
     round: 1,
     currentThrow: {
         player1: {
-            20:0, 19:0, 18: 0, 17: 0, 16: 0, 15:0, 'bullseye': 0
         },
         player2: {
-            20:0, 19:0, 18: 0, 17: 0, 16: 0, 15:0, 'bullseye': 0
         }
     }
 }
@@ -89,9 +87,7 @@ function board(state = initialBoard, action){//probably move board to state.game
     const newBoard = merge({}, state);
     switch(action.type){
         case types.ADD_SCORE://hardcoded for player 1 scores with p2 being computer
-            if(state[action.target].player2 < 3){
-                newBoard[action.target] = merge({}, state[action.target], {player1: state[action.target].player1 + 1})
-            }
+            newBoard[action.target] = merge({}, state[action.target], {player1: state[action.target].player1 + 1})
            return newBoard
         break
         case types.END_TURN:
@@ -108,20 +104,19 @@ function game(state = initialGame, action){
     let player1, player2, currentThrow
     switch(action.type){//clean up all these merges
         case types.ADD_SCORE:
-            player1 = merge({},state.currentThrow.player1)
-            player1[action.target] = player1[action.target] + 1
-            player2 = {} 
-            currentThrow = merge({},state.currentThrow,{player1: player1, player2: player2})
-            return merge({}, state, {currentThrow: currentThrow})
+            player1 = merge({},state.currentThrow.player1)//todo, don't append if not valid nit
+            player1[action.target] = player1[action.target] ? player1[action.target] + 1 : 1
+            currentThrow = merge({},state.currentThrow,{player1: player1})
+            return Object.assign({}, state, {currentThrow: currentThrow})
         break
         case types.END_TURN:
-            player1 = initialGame.currentThrow.player1
+            player1 = {}//no actual state for computer term, going and resetting player 1 throw
             player2 = action.results.totalHits.reduce((currentThrow,hit)=>{
                 currentThrow[hit] = currentThrow.hasOwnProperty(hit) ? currentThrow[hit] + 1 : 1
                 return currentThrow
             },{})
-            currentThrow = merge({}, state.currentThrow, {player1: player1, player2: player2})
-            return merge({}, state, {currentThrow: currentThrow})
+            currentThrow = {player1: player1, player2: player2}
+            return Object.assign({}, state, {currentThrow: currentThrow})
             //append player 1 to log, take new stuff
         break;
         default:
