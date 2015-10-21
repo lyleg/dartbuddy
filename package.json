@@ -27,7 +27,7 @@
     "redux": "3.0.3"
   },
   "devDependencies": {
-    "babelify": "^6.3.0",
+    "babelify": "^6.4.0",
     "envify": "^3.4.0"
   }
 }
