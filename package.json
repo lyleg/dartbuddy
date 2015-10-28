@@ -14,7 +14,7 @@
     "build": "bin/build.sh",
     "build-scss": "sass css/dartbuddy.scss:dist/css/bundle.css",
     "watch-scss": "sass --watch css/dartbuddy.scss:dist/css/bundle.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "browserify -t babelify js/index.js -o dist/js/bundle.js && browserify -t babelify js/test/test.js| node"
   },
   "author": "Lyle Garza",
   "license": "ISC",
@@ -24,7 +24,8 @@
     "react-bootstrap": "0.27.3",
     "react-dom": "0.14.0",
     "react-redux": "4.0.0",
-    "redux": "3.0.4"
+    "redux": "3.0.4",
+    "tape": "^4.2.2"
   },
   "devDependencies": {
     "babelify": "^6.4.0",
