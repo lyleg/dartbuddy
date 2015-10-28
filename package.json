@@ -25,6 +25,7 @@
     "react-dom": "0.14.0",
     "react-redux": "4.0.0",
     "redux": "3.0.4",
+    "restwrapper": "0.0.15",
     "tape": "^4.2.2"
   },
   "devDependencies": {
