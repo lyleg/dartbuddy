@@ -14,7 +14,7 @@
     "build": "bin/build.sh",
     "build-scss": "sass css/dartbuddy.scss:dist/css/bundle.css",
     "watch-scss": "sass --watch css/dartbuddy.scss:dist/css/bundle.css",
-    "test": "npm run clean && browserify -t babelify js/index.js -o dist/js/bundle.js && browserify -t babelify js/test/test.js| node"
+    "test": "npm run clean && browserify -t babelify js/test/test.js| node"
   },
   "author": "Lyle Garza",
   "license": "ISC",
