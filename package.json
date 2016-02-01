@@ -24,7 +24,7 @@
     "react-bootstrap": "0.27.3",
     "react-dom": "0.14.2",
     "react-redux": "4.0.5",
-    "redux": "3.0.4",
+    "redux": "3.2.0",
     "restwrapper": "0.0.17",
     "tape": "^4.2.2"
   },
