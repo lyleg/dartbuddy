@@ -19,7 +19,7 @@
   "author": "Lyle Garza",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^3.10.1",
+    "lodash": "^4.4.0",
     "react": "^0.14.0",
     "react-bootstrap": "0.27.3",
     "react-dom": "0.14.2",
