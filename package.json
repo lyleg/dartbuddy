@@ -20,7 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^3.10.1",
-    "react": "^0.14.0",
+    "react": "^15.0.0",
     "react-bootstrap": "0.27.3",
     "react-dom": "0.14.2",
     "react-redux": "4.0.5",
